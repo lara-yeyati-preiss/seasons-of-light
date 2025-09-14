@@ -1,7 +1,7 @@
 /* ===== basic settings and definitions ===== */
 
 // data file
-const data = "/utqiagvik_2024.csv";
+const data = "./utqiagvik_2024.csv";
 // tiles per row in the calendar grid
 const number_cols = 28;
 // gap between tiles
