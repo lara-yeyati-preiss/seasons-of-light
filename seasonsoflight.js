@@ -1,7 +1,7 @@
 /* ===== basic settings and definitions ===== */
 
 // data file
-const data = "utqiagvik_2024.csv";
+const data = "/utqiagvik_2024.csv";
 // tiles per row in the calendar grid
 const number_cols = 28;
 // gap between tiles
@@ -33,12 +33,11 @@ const innerH = height - margin.top  - margin.bottom;
 const grid = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
 /* ===== accessibility: title + description ===== */
-svg.attr("role", "img");
-svg.append("title").attr("id", "viz-title")
-   .text("Seasons of Light in Utqiaġvik, Alaska (2024)");
-svg.append("desc").attr("id", "viz-desc")
-   .text("A calendar grid where each tile is a day colored by daylight hours. Polar night, Midnight Sun and the in-between are represented.");
-svg.attr("aria-labelledby", "viz-title viz-desc");
+svg.attr("role", "img")
+   .attr("aria-label",
+     "Seasons of Light in Utqiaġvik, Alaska (2024). A calendar grid where each tile is a day colored by daylight hours."
+   );
+
 
 /* ===== color palette for the three daylight states ===== */
 // dark color for 0h (polar night), light color for 24h (midnight sun), and two endpoints for in-between gradient
