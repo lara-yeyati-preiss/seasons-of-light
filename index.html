@@ -40,7 +40,16 @@
 
       <!-- empty container that the js will populate with the chart -->
       <!-- using an svg with a fixed viewBox (0 0 980 620) so it scales responsively -->
-      <svg id="viz" viewBox="0 0 980 560"></svg>
+      <svg id="viz" viewBox="0 0 980 560"
+      aria-describedby="viz-desc"
+      aria-label="Daily daylight hours in 2024 for Utqiaġvik, Alaska. Dark = polar night, light = midnight sun."
+      ></svg>
+
+      <!-- off-screen description for accessibility purposes -->
+      <p id="viz-desc" class="sr-only">
+       A 28-column calendar grid of 366 squares, one per day, colored by daylight hours. 
+       Polar night is dark blue, midnight sun is light, in-between blends between them.
+      </p>
 
       <!-- empty container that the js will populate with tooltips -->
       <div class="tooltip"></div>
