@@ -1,0 +1,176 @@
+/* ===== basics ===== */
+
+/* default system font, font color, and background color */
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: #f8f4ec;
+  color: #1d2328;
+  margin: 0; /* removes that default margin so that the layout touches the edges precisely, to avoid unwanted white frame */
+}
+
+/* title section to keep it centered and with spaces above and below */
+.title {
+  max-width: 1100px;
+  margin: 40px auto; /* extra space on the top; left and right spaces are set to auto so that content centers */
+  padding: 0 24px; /* padding on left and right so that text doesn't touch the edges on small screens */
+}
+
+/* ===== types, headings & paragraphs ===== */
+
+/* main heading slightly heavier for presence, added space between characters, and space below */
+h1 { 
+  margin-bottom: 10px;
+  font-weight: 650; 
+  letter-spacing: 0.04em; 
+}
+
+/* subtitle readable and not too wide, with space below */
+.subtitle {
+  max-width: 70ch;
+  color: #3f4a50;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* smaller, lighter text below subtitle */
+.subtitle-little {
+  font-size: 13px;
+  color: #5a676f;
+}
+
+/* link style (consistent with link on fine-note below graph) */
+.subtitle-little a { 
+  color: #3c596b; 
+  text-decoration: underline; 
+}
+
+/* margin to separate viz from intro text */
+.viz-wrap { 
+  margin-top: 24px; 
+  position: relative; 
+}
+
+/* small svg of sun over horizon on right corner */
+.sun-icon {
+  position: absolute; /* so that the icon is absolutely positioned inside that viz-wrap box */
+  top: 0px;
+  right: 164px;
+  opacity: 0.6;
+}
+
+/* ===== legends ===== */
+
+/* legend layout in a flex container, so that items can wrap if needed on small screens */
+
+/* items  */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  color: #526269;
+
+/* each legend-item is a flex container for label + swatch */
+/* each pair of label + swatch is aligned vertically and centered, and has a small gap between each element */
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* swatch style: small square with rounded corners and subtle border shadow, for color coding categories with one fixed color (polar night and midnight sun) */
+.swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+}
+
+/* ramp style: short gradient bar to represent the "in-between" range */
+.ramp {
+  width: 72px;
+  height: 10px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
+  background: linear-gradient(to right, #4d6f85, #cfd9df);
+}
+
+/* ===== svg ===== */
+
+/* responsive svg canvas: it scales to the container's width but keeps its aspect ratio (height: auto) */
+#viz { 
+  display: block; 
+  width: 100%; 
+  height: auto; 
+}
+
+/* define the color used by date labels + coords + sun */
+/* so that every text drawn inside #viz picks up its color from this */
+.viz-wrap { color: #526269; 
+}
+
+/* style for the small start/end date labels ("january 1", "december 31") */
+.date-label { 
+  font-size: 14px; 
+  letter-spacing: 0.2px;
+  opacity: 0.6;
+}
+
+/* style for the coordinate label added in the js on the top right corner, so it’s subtle, lighter, and monospaced */
+.corner-coord {
+  font-size: 13px;
+  font-family: "Courier Prime", "IBM Plex Mono", monospace;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+}
+
+/* smaller font size for the <tspan> elements inside the corner-coord (the "N" and "W") */
+.corner-coord .coord-suffix { 
+  font-size: .7em; 
+  baseline-shift: 30%; /* raises N/W a bit */
+}
+
+/* weekday letter that appears in each tile on hover needs to stay unobtrusive (so that it doesn't engage with the cursor) */
+.weekday-letter {
+  font-size: 9px;
+  font-weight: 500;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* tooltip */
+.tooltip {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;  /* js sets to 1 when showing */
+  background: #222;
+  color: #e6e5e5;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* ===== text blocks below the viz ===== */
+
+/* definitions style */
+.definitions {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #445057;
+  max-width: 70ch;
+}
+
+/* fine note style: smaller, lighter text with more line height for readability, with space above to separate it from the definitions */
+.fine-note {
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #445057;
+  max-width: 70ch;
+}
+
+/* link style (consistent with link on smaller text above graph) */
+.fine-note a { 
+  color: #3c596b; 
+  text-decoration: underline; 
+}

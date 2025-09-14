@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Seasons of Light</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./style.css" />
+<!-- linking to CDN for d3 -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+</head>
+<body>
+
+  <!-- divs for main title + subtitle + smaller text below subtitle -->
+  <div class="title">
+    <h1>Seasons of Light</h1>
+
+    <p class="subtitle">
+      A year in Utqiaġvik, Alaska—where time fractures under cycles of light and darkness.<br>
+      Each tile marks a day, colored by its share of daylight hours.<br>
+      Days and weeks dissolve into blocks of sky, their measure carved by the sun.
+    </p>
+
+    <p class="subtitle-little">
+      Data: <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Open-Meteo</a> (2024)
+    </p>    
+    
+    <div class="viz-wrap">
+      <!-- empty container that the js will populate with legends + swatches -->
+      <div id="legend" class="legend"></div>
+      
+      <!-- small svg of sun over horizon on right corner-->
+      <div class="sun-icon">
+      <svg width="84" height="52" viewBox="0 0 84 52" aria-label="Sun over horizon">
+      <g fill="none" stroke="#526269" stroke-width="2">
+      <line x1="4" y1="28" x2="80" y2="28"/>
+      <path d="M16 28 A12 12 0 0 1 68 28"/>
+      </g>
+      </svg>
+      </div>
+
+      <!-- empty container that the js will populate with the chart -->
+      <!-- using an svg with a fixed viewBox (0 0 980 620) so it scales responsively -->
+      <svg id="viz" viewBox="0 0 980 560"></svg>
+
+      <!-- empty container that the js will populate with tooltips -->
+      <div class="tooltip"></div>
+
+      <!-- definitions text block below viz -->
+      <div class="definitions">
+        <div><strong>polar night</strong> — sun never rises (0 daylight hours)</div>
+        <div><strong>midnight sun</strong> — sun never sets (24 daylight hours)</div>
+        <div><strong>in-between</strong> — the period when the sun both rises and sets (0 &lt; daylight hours &lt; 24)</div>
+      </div>
+
+      <!-- fine note -->
+      <div class="fine-note">
+        These phenomena are defined astronomically by the sun’s altitude.
+        Polar Night occurs when the sun altitude never reaches 0° (the horizon), and Midnight Sun occurs when it never goes below 0°.
+        The periods shown here are an approximation, derived from daylight-hour calculations (source:
+        <a href="https://open-meteo.com/en/docs" target="_blank" rel="noopener">Open-Meteo</a>).
+      </div>
+    </div>
+  </div>
+
+  <!-- linking to js code in a separate file -->
+  <script src="./seasonsoflight.js"></script>
+</body>
+</html>
