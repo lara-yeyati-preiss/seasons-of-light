@@ -32,13 +32,6 @@ const innerH = height - margin.top  - margin.bottom;
 // so all the tile positions can start at that new local inside the grid area instead of at the svg's edge
 const grid = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
-/* ===== accessibility: title + description ===== */
-svg.attr("role", "img")
-   .attr("aria-label",
-     "Seasons of Light in Utqiaġvik, Alaska (2024). A calendar grid where each tile is a day colored by daylight hours."
-   );
-
-
 /* ===== color palette for the three daylight states ===== */
 // dark color for 0h (polar night), light color for 24h (midnight sun), and two endpoints for in-between gradient
 const polar_flat = "#243341";
