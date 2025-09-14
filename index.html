@@ -30,7 +30,7 @@
       
       <!-- small svg of sun over horizon on right corner-->
       <div class="sun-icon">
-      <svg width="84" height="52" viewBox="0 0 84 52" aria-label="Sun over horizon">
+      <svg width="84" height="52" viewBox="0 0 84 52">
       <g fill="none" stroke="#526269" stroke-width="2">
       <line x1="4" y1="28" x2="80" y2="28"/>
       <path d="M16 28 A12 12 0 0 1 68 28"/>
@@ -41,15 +41,11 @@
       <!-- empty container that the js will populate with the chart -->
       <!-- using an svg with a fixed viewBox (0 0 980 620) so it scales responsively -->
       <svg id="viz" viewBox="0 0 980 560"
-      aria-describedby="viz-desc"
-      aria-label="Daily daylight hours in 2024 for Utqiaġvik, Alaska. Dark = polar night, light = midnight sun."
-      ></svg>
-
-      <!-- off-screen description for accessibility purposes -->
-      <p id="viz-desc" class="sr-only">
-       A 28-column calendar grid of 366 squares, one per day, colored by daylight hours. 
-       Polar night is dark blue, midnight sun is light, in-between blends between them.
-      </p>
+      role="img"
+      aria-label="Daily daylight hours in 2024 for Utqiaġvik, Alaska.
+             A 28-column calendar grid of 366 squares, one per day, colored by daylight hours. 
+             Polar night is dark blue, midnight sun is light, in-between blends between them.">
+      </svg>
 
       <!-- empty container that the js will populate with tooltips -->
       <div class="tooltip"></div>
