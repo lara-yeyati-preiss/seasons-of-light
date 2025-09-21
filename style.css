@@ -88,8 +88,8 @@ h1 {
 }
 
 /* solid swatches */
-.swatch.polar    { background-color: #243341; }
-.swatch.midnight { background-color: #c4c2a0ff; } /* 6-digit version of #e0ddafff */
+.swatch.polar    { background-color: #2d4052ff; }
+.swatch.midnight { background-color: #e1deb9; }
 
 
 /* ramp style: short gradient bar to represent the "in-between" range */
