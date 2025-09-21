@@ -43,7 +43,7 @@ const between1   = "#cfd9dfff";
 function seasonLabel(rounded_hours) {
   if (rounded_hours === 24) return "midnight sun";
   if (rounded_hours === 0)  return "polar night";
-  return "in-between";
+  return "twilight seasons";
 }
 
 // function that returns a color for each daylight value to fill the tile
@@ -74,11 +74,11 @@ function textColor(fill) {
 function buildLegend(){
   const legend = d3.select(".legend");
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="swatch" style="background:${polar_flat}"></span><span>polar night</span>`);
+    .html(`<span class="swatch polar"></span><span>polar night</span>`);
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="swatch" style="background:${mid_flat}"></span><span>midnight sun</span>`);
+    .html(`<span class="swatch midnight"></span><span>midnight sun</span>`);
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="ramp"></span><span>in-between</span>`);
+    .html(`<span class="swatch ramp"></span><span>twilight seasons</span>`);
 }
 buildLegend();
 
@@ -142,7 +142,7 @@ const cells = grid.selectAll("g.day")
   const col = i % number_cols;
   const row = Math.floor(i / number_cols);
   const x = col * (cellW + gutter);
-  const y = row * (cellH + gutter);
+  const y = row * (cellH + gutter) + 36;
   return `translate(${x}, ${y})`; // move this "g" so its children draw at (x,y)
 });
 
@@ -269,7 +269,7 @@ cells
 grid.append("text")
   .attr("class", "date-label")
   .attr("x", 4)
-  .attr("y", -10)
+  .attr("y", +26)
   .text("january 1")
 
 // bottom-right label just below the last tile
@@ -279,7 +279,7 @@ const lastRow = Math.floor(lastI / number_cols);
 grid.append("text")
   .attr("class", "date-label")
   .attr("x", lastCol * (cellW + gutter) + 4) // inside the last tile, with a small left margin
-  .attr("y", lastRow * (cellH + gutter) + cellH + 16) // below the last tile, with a small margin
+  .attr("y", lastRow * (cellH + gutter) + cellH + 52) // below the last tile, with a small margin
   .text("december 31")
 
 /* ===== decorative corner coordinate ===== */
@@ -300,4 +300,58 @@ grid.append("image")
   .attr("height", 18)
   .attr("opacity", 0.6);
 
-})
+/* ===== "today" marker + note ===== */
+// defining user's local "today":
+const today = new Date();
+const todayMonth = today.getMonth();
+const todayDate  = today.getDate();
+
+// finding the index for the 2024 day with that same month/day
+// searching the days array for the first element whose month and date match the user’s "today", and returning its position (0-based)
+const todayIdx = days.findIndex(d => d.dateOnly.getMonth() === todayMonth && d.dateOnly.getDate() === todayDate);
+
+// defining an accent so the grid marker and note above share the exact same color
+const todayAccent = "#756237";
+
+// pulling the matched day object
+const dToday = days.find(d =>
+  d.dateOnly.getMonth() === todayMonth && d.dateOnly.getDate() === todayDate
+);
+
+// adding an outline on top of that day's tile
+// selecting that cell's "g" and appending a marker
+const todayCell = grid.selectAll("g.day").filter(d => d === dToday);
+
+todayCell.append("rect")
+  .attr("class", "today-marker")
+  .attr("x", 0).attr("y", 0)
+  .attr("rx", 3)
+  .attr("width",  cellW)
+  .attr("height", cellH)
+  .attr("fill", "none")
+  .attr("stroke", todayAccent)   // e.g., "#756237"
+  .attr("stroke-width", 3)
+  .attr("pointer-events", "none");
+
+const todayLabel = d3.timeFormat("%B %d")(today);
+const todayHM    = formatHoursHM(dToday.daylight); // e.g., "12h 03m"
+
+// placing the note right under the existing corner coordinates, aligned to the right edge
+grid.append("text")
+  .attr("class", "today-note")
+  .attr("x", innerW - 8)
+  .attr("y", 0)
+  .attr("text-anchor", "end")
+  .text(`A day like today — ${todayLabel} • ${todayHM}`)
+  .attr("fill", todayAccent)
+  .attr("opacity", 0.9);
+
+grid.append("text")
+  .attr("class", "today-note")
+  .attr("x", innerW - 8)
+  .attr("y", 16)
+  .attr("text-anchor", "end")
+  .text(`Daylight hours: ${todayHM}`)
+  .attr("fill", todayAccent)
+  .attr("opacity", 0.9);
+});

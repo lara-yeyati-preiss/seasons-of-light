@@ -86,6 +86,11 @@ h1 {
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
 }
 
+/* solid swatches */
+.swatch.polar    { background-color: #243341; }
+.swatch.midnight { background-color: #e0ddaf; } /* 6-digit version of #e0ddafff */
+
+
 /* ramp style: short gradient bar to represent the "in-between" range */
 .ramp {
   width: 72px;
@@ -158,6 +163,7 @@ h1 {
   line-height: 1.6;
   color: #445057;
   max-width: 70ch;
+  margin-top: 64px;
 }
 
 /* fine note style: smaller, lighter text with more line height for readability, with space above to separate it from the definitions */
@@ -173,4 +179,10 @@ h1 {
 .fine-note a { 
   color: #3c596b; 
   text-decoration: underline; 
+}
+
+/* note with current date and daylight hours on the tip right */
+.today-note {
+  font-size: 13px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
