@@ -35,7 +35,7 @@ const grid = svg.append("g").attr("transform", `translate(${margin.left},${margi
 /* ===== color palette for the three daylight states ===== */
 // dark color for 0h (polar night), light color for 24h (midnight sun), and two endpoints for in-between gradient
 const polar_flat = "#243341";
-const mid_flat   = "#e0ddafff";
+const mid_flat   = "#c4c2a0ff";
 const between0   = "#4d6f85";
 const between1   = "#cfd9dfff";
 
@@ -311,7 +311,7 @@ const todayDate  = today.getDate();
 const todayIdx = days.findIndex(d => d.dateOnly.getMonth() === todayMonth && d.dateOnly.getDate() === todayDate);
 
 // defining an accent so the grid marker and note above share the exact same color
-const todayAccent = "#756237";
+const todayAccent = "#5b7c4aff";
 
 // pulling the matched day object
 const dToday = days.find(d =>
