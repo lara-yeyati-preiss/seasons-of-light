@@ -36,7 +36,7 @@ const grid = svg.append("g").attr("transform", `translate(${margin.left},${margi
 // dark color for 0h (polar night), light color for 24h (midnight sun), and two endpoints for in-between gradient
 const polar_flat = "#243341";
 const mid_flat   = "#e1deb9";
-const between0   = "#2d4052ff";
+const between0   = "#405971ff";
 const between1   = "#cfd9dfff";
 
 //  function that returns label for each rounded daylight category to show in tooltips
