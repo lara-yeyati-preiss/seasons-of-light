@@ -342,7 +342,7 @@ grid.append("text")
   .attr("x", innerW - 8)
   .attr("y", 0)
   .attr("text-anchor", "end")
-  .text(`A day like today — ${todayLabel} • ${todayHM}`)
+  .text(`A day like today — ${todayLabel}`)
   .attr("fill", todayAccent)
   .attr("opacity", 0.9);
 
