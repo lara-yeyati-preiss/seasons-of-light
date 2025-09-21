@@ -311,7 +311,7 @@ const todayDate  = today.getDate();
 const todayIdx = days.findIndex(d => d.dateOnly.getMonth() === todayMonth && d.dateOnly.getDate() === todayDate);
 
 // defining an accent so the grid marker and note above share the exact same color
-const todayAccent = "#5b7c4aff";
+const todayAccent = "#8c5f6d";
 
 // pulling the matched day object
 const dToday = days.find(d =>
@@ -329,7 +329,7 @@ todayCell.append("rect")
   .attr("width",  cellW)
   .attr("height", cellH)
   .attr("fill", "none")
-  .attr("stroke", todayAccent)   // e.g., "#756237"
+  .attr("stroke", todayAccent)
   .attr("stroke-width", 3)
   .attr("pointer-events", "none");
 
