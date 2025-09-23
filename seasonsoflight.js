@@ -33,7 +33,7 @@ const innerH = height - margin.top  - margin.bottom;
 const grid = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
 
 /* ===== color palette for the three daylight states ===== */
-// dark color for 0h (polar night), light color for 24h (midnight sun), and two endpoints for in-between gradient
+// dark color for 0h (Polar night), light color for 24h (Midnight sun), and two endpoints for in-between gradient
 const polar_flat = "#243341";
 const mid_flat   = "#d8dccc";
 const between0   = "#506b82";
@@ -41,13 +41,13 @@ const between1   = "#cfd9dfff";
 
 //  function that returns label for each rounded daylight category to show in tooltips
 function seasonLabel(rounded_hours) {
-  if (rounded_hours === 24) return "midnight sun";
-  if (rounded_hours === 0)  return "polar night";
-  return "twilight seasons";
+  if (rounded_hours === 24) return "Midnight sun";
+  if (rounded_hours === 0)  return "Polar night";
+  return "Twilight seasons";
 }
 
 // function that returns a color for each daylight value to fill the tile
-// it uses the argument daylightRounded to detect the extremes exactly (0 → "polar night", 24 → "midnight sun") 
+// it uses the argument daylightRounded to detect the extremes exactly (0 → "Polar night", 24 → "Midnight sun") 
 // and daylightRaw to compute a smooth gradient color day-to-day
 // if rounded hours are exactly 0 or 24, use the flat colors
 // otherwise, it maps hours (from 1 to 23) into a number from 0 to 1
@@ -69,16 +69,16 @@ function textColor(fill) {
 }
 
 // function that builds the legend below the viz
-// the legend has three items: polar night swatch, midnight sun swatch, and in-between ramp
+// the legend has three items: Polar night swatch, Midnight sun swatch, and in-between ramp
 // each item has a label next to it
 function buildLegend(){
   const legend = d3.select(".legend");
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="swatch polar"></span><span>polar night</span>`);
+    .html(`<span class="swatch polar"></span><span>Polar night</span>`);
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="swatch midnight"></span><span>midnight sun</span>`);
+    .html(`<span class="swatch midnight"></span><span>Midnight sun</span>`);
   legend.append("div").attr("class","legend-item")
-    .html(`<span class="swatch ramp"></span><span>twilight seasons</span>`);
+    .html(`<span class="swatch ramp"></span><span>Twilight seasons</span>`);
 }
 buildLegend();
 
@@ -270,7 +270,7 @@ grid.append("text")
   .attr("class", "date-label")
   .attr("x", 4)
   .attr("y", +26)
-  .text("january 1")
+  .text("January 1")
 
 // bottom-right label just below the last tile
 const lastI   = days.length - 1;
@@ -280,7 +280,7 @@ grid.append("text")
   .attr("class", "date-label")
   .attr("x", lastCol * (cellW + gutter) + 4) // inside the last tile, with a small left margin
   .attr("y", lastRow * (cellH + gutter) + cellH + 52) // below the last tile, with a small margin
-  .text("december 31")
+  .text("December 31")
 
 /* ===== decorative corner coordinate ===== */
 // add a small text label near the top-right of the grid
