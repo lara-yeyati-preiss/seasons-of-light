@@ -1,5 +1,74 @@
+# Operating System Files
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE and Editor Files
+.idea/
 .vscode/
-node_modules/
-dist/
-build/
+*.swp
+*.swo
+*~
+
+# Build and Dependency Directories
+/node_modules/
+/build/
+/dist/
+/target/
+/out/
+
+# Compiled Files
+*.class
+*.pyc
+*.o
+*.so
+
+# Log and Temporary Files
+*.log
+*.tmp
+*.temp
+
+# Configuration Files
+config.ini
+.env
+.env.local
+.env.*.local
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Database
+*.sqlite
+
+# Backup Files
+*.bak
+*.backup
+
+# Other Common Ignores
+.sass-cache/
+.cache/
+.pytest_cache/
+__pycache__/
+
+# Project-specific ignores (examples)
+/coverage/
+.nyc_output/
+*.min.js
+*.min.css
+
+# Ignore all files in a directory
+logs/*
+# But keep the directory
+!logs/.gitkeep
+
+# Ignore files with specific extensions in all directories
+**/*.log
+**/*.tmp
+
+# Ignore specific file
+secret_key.txt
