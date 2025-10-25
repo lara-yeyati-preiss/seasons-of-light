@@ -1,57 +1,3 @@
-/* ===== Responsive: Mobile Styles ===== */
-@media (max-width: 600px) {
-  body {
-    font-size: 16px;
-  }
-  .title {
-    margin: 24px 0 24px 0;
-    padding: 0 10px;
-  }
-  .subtitle, .fine-note, .definitions {
-    max-width: 100%;
-    font-size: 16px;
-    padding: 0 4px;
-  }
-  .viz-wrap {
-    margin-top: 12px;
-    padding: 0 2px;
-  }
-  .sun-icon {
-    display: none;
-  }
-  .legend {
-    gap: 12px;
-    font-size: 15px;
-  }
-  .legend-item {
-    gap: 6px;
-  }
-  .swatch, .ramp {
-    width: 18px;
-    height: 10px;
-  }
-  .ramp {
-    width: 48px;
-  }
-  #viz {
-    min-width: 0;
-    width: 100vw;
-    max-width: 100vw;
-  }
-  .definitions, .fine-note {
-    margin-top: 32px;
-    font-size: 15px;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  .title h1 {
-    font-size: 2em;
-  }
-  .today-note {
-    font-size: 12px;
-  }
-}
 /* ===== basics ===== */
 
 /* default system font, font color, and background color */
@@ -251,7 +197,7 @@ h1 {
     margin: 24px 0 24px 0;
     padding: 0 10px;
   }
-  .subtitle, .fine-note, .definitions {
+  .subtitle, .definitions {
     max-width: 100%;
     font-size: 16px;
     padding: 0 4px;
@@ -284,9 +230,13 @@ h1 {
     width: 100vw;
     max-width: 100vw;
   }
-  .definitions, .fine-note {
+  .definitions {
     margin-top: 32px;
-    font-size: 15px;
+    font-size: 13px;
+  }
+  .fine-note {
+    margin-top: 32px;
+    font-size: 10px;
   }
   h1 {
     font-size: 1.5em;
