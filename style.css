@@ -1,101 +1,90 @@
+/* ===== google fonts import ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,300;1,8..60,400&family=DM+Mono:wght@300;400&display=swap');
+
 /* ===== basics ===== */
 
-/* default system font, font color, and background color */
 body {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: 'Source Serif 4', Georgia, serif;
   background: #fcfaf7;
   color: #1d2328;
-  margin: 0; /* removes that default margin so that the layout touches the edges precisely, to avoid unwanted white frame */
+  margin: 0;
 }
 
-/* title section to keep it centered and with spaces above and below */
 .title {
   max-width: 1100px;
-  margin: 40px auto; /* extra space on the top; left and right spaces are set to auto so that content centers */
-  padding: 0 24px; /* padding on left and right so that text doesn't touch the edges on small screens */
+  margin: 52px auto;
+  padding: 0 24px;
 }
 
 /* ===== types, headings & paragraphs ===== */
 
-/* main heading slightly heavier for presence, added space between characters, and space below */
-h1 { 
-  margin-bottom: 10px;
-  font-weight: 650; 
-  letter-spacing: 0.04em; 
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-size: 2.2rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+  margin-top: 0;
+  line-height: 1.1;
+  color: #161b1f;
 }
 
-/* subtitle readable and not too wide, with space below */
 .subtitle {
-  max-width: 70ch;
+  max-width: 80ch;
   color: #3f4a50;
-  font-size: 18px;
-  margin-bottom: 10px;
-  line-height: 1.4; /* space between lines */
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 14px;
+  line-height: 1.65;
+  font-style: italic;
+  letter-spacing: 0.01em;
 }
 
-/* smaller, lighter text below subtitle */
-.subtitle-little {
-  font-size: 13px;
-  color: #5a676f;
+.viz-wrap {
+  margin-top: 32px;
+  position: relative;
 }
 
-/* link style (consistent with link on fine-note below graph) */
-.subtitle-little a { 
-  color: #3c596b; 
-  text-decoration: underline; 
-}
-
-/* margin to separate viz from intro text */
-.viz-wrap { 
-  margin-top: 24px; 
-  position: relative; 
-}
-
-/* small svg of sun over horizon on right corner */
 .sun-icon {
-  position: absolute; /* so that the icon is absolutely positioned inside that viz-wrap box */
+  position: absolute;
   top: 0px;
   right: 164px;
-  opacity: 0.6;
+  opacity: 0.45;
 }
 
 /* ===== legends ===== */
 
-/* legend layout in a flex container, so that items can wrap if needed on small screens */
-
-/* items  */
 .legend {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
-  color: #526269;
-
-/* each legend-item is a flex container for label + swatch */
-/* each pair of label + swatch is aligned vertically and centered, and has a small gap between each element */
+  color: #6a7880;
+  font-size: 13.5px;
+  font-family: 'DM Mono', 'Courier Prime', monospace;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: lowercase;
 }
+
 .legend-item {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* swatch style: small square with rounded corners and subtle border shadow, for color coding categories with one fixed color (polar night and midnight sun) */
 .swatch {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 3px;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
 }
 
-/* solid swatches */
 .swatch.polar    { background-color: #243341; }
 .swatch.midnight { background-color: #d8dccc; }
 
-
-/* ramp style: short gradient bar to represent the "in-between" range */
 .ramp {
   width: 72px;
-  height: 10px;
+  height: 9px;
   border-radius: 3px;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.06);
   background: linear-gradient(to right, #506b82, #cfd9df);
@@ -103,43 +92,40 @@ h1 {
 
 /* ===== svg ===== */
 
-/* responsive svg canvas: it scales to the container's width but keeps its aspect ratio (height: auto) */
-#viz { 
-  display: block; 
-  width: 100%; 
-  height: auto; 
+#viz {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* define the color used by date labels + coords + sun */
-/* so that every text drawn inside #viz picks up its color from this */
-.viz-wrap { color: #526269; 
-}
+.viz-wrap { color: #526269; }
 
-/* style for the small start/end date labels ("january 1", "december 31") */
-.date-label { 
-  font-size: 14px; 
-  letter-spacing: 0.2px;
-  opacity: 0.6;
-}
-
-/* style for the coordinate label added in the js on the top right corner, so it’s subtle, lighter, and monospaced */
-.corner-coord {
+.date-label {
   font-size: 13px;
-  font-family: "Courier Prime", "IBM Plex Mono", monospace;
+  font-family: 'DM Mono', 'Courier Prime', monospace;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  opacity: 0.55;
+}
+
+.corner-coord {
+  font-size: 12.5px;
+  font-family: 'DM Mono', 'IBM Plex Mono', monospace;
+  font-weight: 300;
   font-variant-numeric: tabular-nums;
-  opacity: 0.6;
+  opacity: 0.55;
+  letter-spacing: 0.03em;
 }
 
-/* smaller font size for the <tspan> elements inside the corner-coord (the "N" and "W") */
-.corner-coord .coord-suffix { 
-  font-size: .7em; 
-  baseline-shift: 30%; /* raises N/W a bit */
+.corner-coord .coord-suffix {
+  font-size: .7em;
+  baseline-shift: 30%;
 }
 
-/* weekday letter that appears in each tile on hover needs to stay unobtrusive (so that it doesn't engage with the cursor) */
 .weekday-letter {
   font-size: 9px;
-  font-weight: 500;
+  font-weight: 400;
   user-select: none;
   pointer-events: none;
 }
@@ -148,62 +134,79 @@ h1 {
 .tooltip {
   position: fixed;
   pointer-events: none;
-  opacity: 0;  /* js sets to 1 when showing */
-  background: #222;
-  color: #e6e5e5;
-  padding: 10px 12px;
-  border-radius: 6px;
+  opacity: 0;
+  background: #1a2228;
+  color: #dde3e6;
+  padding: 9px 13px;
+  border-radius: 5px;
   font-size: 12px;
+  font-family: 'DM Mono', 'Courier Prime', monospace;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
 }
 
-/* ===== text blocks below the viz ===== */
 
-/* definitions style */
 .definitions {
   font-size: 16px;
-  line-height: 1.6;
-  color: #445057;
-  max-width: 70ch;
-  margin-top: 64px;
+  line-height: 1.75;
+  color: #3f4a50;
+  max-width: 80ch;
+  margin-top: 56px;
+  font-weight: 300;
 }
 
-/* fine note style: smaller, lighter text with more line height for readability, with space above to separate it from the definitions */
+.definitions strong {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  font-style: normal;
+  color: #1d2328;
+  font-size: 1em;
+}
+
 .fine-note {
   margin-top: 20px;
-  font-size: 14px;
-  line-height: 1.45;
-  color: #445057;
-  max-width: 70ch;
-}
-
-/* link style (consistent with link on smaller text above graph) */
-.fine-note a { 
-  color: #3c596b; 
-  text-decoration: underline; 
-}
-
-/* note with current date and daylight hours on the tip right */
-.today-note {
   font-size: 13px;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height: 1.6;
+  color: #7a8990;
+  max-width: 80ch;
+  font-family: 'DM Mono', 'Courier Prime', monospace;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
-/* ===== mobile styles===== */
+.fine-note a {
+  color: #3c596b;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.today-note {
+  font-size: 12.5px;
+  font-family: 'DM Mono', 'Courier Prime', monospace;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* ===== mobile styles ===== */
 @media (max-width: 600px) {
   body {
     font-size: 16px;
   }
   .title {
-    margin: 24px 0 24px 0;
-    padding: 0 10px;
+    margin: 28px 0 24px 0;
+    padding: 0 14px;
   }
-  .subtitle, .definitions {
+  h1 {
+    font-size: 2rem;
+  }
+  .subtitle {
     max-width: 100%;
-    font-size: 16px;
-    padding: 0 4px;
+    font-size: 15px;
+    padding: 0;
   }
   .viz-wrap {
-    margin-top: 12px;
+    margin-top: 16px;
     padding: 0 2px;
   }
   .sun-icon {
@@ -211,17 +214,18 @@ h1 {
   }
   .legend {
     gap: 12px;
-    font-size: 15px;
+    font-size: 12px;
   }
   .legend-item {
     gap: 6px;
   }
-  .swatch, .ramp {
-    width: 18px;
+  .swatch {
+    width: 14px;
     height: 10px;
   }
   .ramp {
     width: 48px;
+    height: 8px;
   }
   #viz {
     min-width: 0;
@@ -230,16 +234,10 @@ h1 {
   }
   .definitions {
     margin-top: 32px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .fine-note {
-    margin-top: 32px;
-    font-size: 10px;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  .today-note {
-    font-size: 12px;
+    margin-top: 20px;
+    font-size: 11px;
   }
 }
