@@ -5,7 +5,7 @@ Each tile marks a day, colored by its share of daylight hours: from polar night 
 
 **Live demo:** https://lara-yeyati-preiss.github.io/seasons-of-light/
 
-![Screenshot of the visualization](./cover.png)
+![Screenshot of the visualization](./cover-seasons.png)
 
 ## How it works
 - One tile = one day.  
